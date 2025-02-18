@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Posts</title>
         <!-- Fonts -->
+        <link rel="stylesheet" href={{ asset("css/display.css") }}>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
@@ -12,13 +13,18 @@
             {{ $post->title }}
         </h1>
         <div class="content">
+        <a href="">{{ $post->category->name }}</a>
             <div class="content__post">
                 <h3>本文</h3>
+                <!-- 〆切時間（日時のみを出す） -->
                 <p>{{ $post->body }}</p>    
+            </div>
+            <div>
+                <p>カテゴリー：{{ $post->category->title }}</p>
             </div>
         </div>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/posts">戻る</a>
         </div>
     </body>
 </html>

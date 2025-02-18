@@ -9,6 +9,7 @@
     <body>
         <h1>Blog Name</h1>
         <div class='posts'>
+        <a href='/posts/create'>create</a>
             @foreach ($posts as $post)
                 <div class='post'>
                 <h2 class='title'>
@@ -16,6 +17,7 @@
                 </h2>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
+                <a href="">{{ $post->category->title }}</a>
             @endforeach
         </div>
         <div class='paginate'>

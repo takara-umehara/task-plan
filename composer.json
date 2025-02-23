@@ -49,7 +49,7 @@
             "@php artisan key:generate --ansi"
         ],
         "vercel": [
-            "@php artisan migrate:fresh --force"
+            "@php artisan migrate --force"
         ]
     },
     "extra": {

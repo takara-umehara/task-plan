@@ -37,4 +37,8 @@ Route::post('/posts', [PostController::class, 'store']);
 
 Route::get('/posts/{post}', [PostController::class ,'show']);
 
+// Route::get('/posts/complete', [PostController::class , 'complete_index']);
+
+Route::get('/posts/complete', [PostController::class , 'complete']);
+
 require __DIR__.'/auth.php';

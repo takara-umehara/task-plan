@@ -39,5 +39,11 @@ class PostController extends Controller
     {
         return view('posts.create')->with(['categories' => $category->get()]);
     }
+
+    public function complete(Post $post)
+    {
+        $posts = DB::table("posts")->whereNotNull("completed_dateTime")->get();
+        return view('posts.complete')->with(['posts' => $posts]);
+    }
 }
 ?>

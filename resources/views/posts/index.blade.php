@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Blog1</title>
-        <link rel="stylesheet" href={{ asset("public/css/index1.css") }}>
         @vite('resources/js/vite_css.js')
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

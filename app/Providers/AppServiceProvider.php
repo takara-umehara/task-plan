@@ -20,8 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \URL::forceScheme('https');
-        $this->app['request']->server->set('HTTPS','on');
+        \URL::forceScheme('https'); //デプロイ時はコメントアウトを外す。開発環境ではコメントアウトをする。
+        $this->app['request']->server->set('HTTPS','on'); //デプロイ時はコメントアウトを外す。開発環境ではコメントアウトをする。
         Paginator::useBootstrap();
         //Paginator::useBootstrapFive();
         //Paginator::useBootstrapFour();

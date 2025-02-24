@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
+        @vite('resources/js/vite_css.js')
         <title>Blog</title>
     </head>
     <body>
@@ -22,7 +23,7 @@
             </div>
             <div class="importance">
                 <h2>importance</h2>
-                <input type=number name="post[importance]" placeholder="重要度"></textarea>
+                <input class=importance_input type=number max=5 min=1 name="post[importance]" placeholder="重要度"></textarea>
             </div>
             <div class="category">
                 <h2>Category</h2>

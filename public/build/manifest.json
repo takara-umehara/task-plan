@@ -1,13 +1,30 @@
 {
+  "_posts_index-!~{004}~.js": {
+    "file": "assets/posts_index-CmMGyqAc.css",
+    "src": "_posts_index-!~{004}~.js"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CM7fOm3G.css",
+    "file": "assets/app-CaCh5EeP.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CvSG40sc.js",
+    "file": "assets/app-BuZilk0Z.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/posts_index-CmMGyqAc.css"
+    ]
+  },
+  "resources/js/vite_css.js": {
+    "file": "assets/vite_css-CVo34DHn.js",
+    "name": "vite_css",
+    "src": "resources/js/vite_css.js",
+    "isEntry": true,
+    "css": [
+      "assets/vite_css-I6kIr4_t.css",
+      "assets/posts_index-CmMGyqAc.css"
+    ]
   }
 }

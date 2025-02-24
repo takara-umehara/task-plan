@@ -7,7 +7,7 @@
         },
         {
             "src": "public/**",
-            "use": "vercel-php@0.6.2"
+            "use": "@vercel/static"
         },
         {
             "src": "package.json",

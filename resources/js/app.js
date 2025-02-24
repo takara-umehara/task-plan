@@ -1,4 +1,5 @@
 import './bootstrap';
+import '../css/posts_index';
 
 import Alpine from 'alpinejs';
 

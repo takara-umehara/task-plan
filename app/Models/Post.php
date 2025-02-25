@@ -34,9 +34,14 @@ class Post extends Model
         return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
     }
 
-    public function getPaginateByLimit(int $limit_count = 4)
+    public function scopeGetPaginateByLimit($query, int $limit_count = 4)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $query->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+
+    protected $casts = [
+        'deadline_dateTime' => 'datetime',
+    ];
+
 }

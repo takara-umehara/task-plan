@@ -36,3 +36,7 @@
 .deadline_dateTime{
     width:30%;
 } 
+
+.paginate{
+    display:flex;
+}

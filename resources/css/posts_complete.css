@@ -1,0 +1,27 @@
+.completedTitle{
+    width:30%;
+}
+
+.completedCategory{
+    width:15%;
+}
+
+.completedImportance{
+    width:10%;
+}
+
+.completedDeadline_dateTime{
+    width:25%;
+} 
+
+.back{
+    width:10%;
+}
+
+.delete{
+    width:10%;
+}
+
+.paginate{
+    display:flex;
+}

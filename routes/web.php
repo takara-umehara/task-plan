@@ -25,20 +25,26 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    Route::get('/posts', [PostController::class, 'index']);
+    
+    Route::get('/posts/complete', [PostController::class , 'complete']);
+
+    Route::get('/posts/create', [PostController::class, 'create']);
+
+    Route::post('/posts', [PostController::class, 'store']);
+
+    Route::get('/posts/{post}', [PostController::class ,'show']);
+
+    Route::post('/posts/{post}/check', [PostController::class, 'check']);
+
+    Route::post('/posts/{post}/back', [PostController::class, 'back']);
+
+    Route::delete('/posts/{post}/delete', [PostController::class, 'delete']);
 });
-
-Route::get('/posts', [PostController::class, 'index']);
-
-Route::get('/posts/create', [PostController::class, 'create']);
-
-Route::post('/posts', [PostController::class, 'store']);
-
-Route::get('/posts/{post}', [PostController::class ,'show']);
-
-// Route::get('/posts/complete', [PostController::class , 'complete_index']);
-
-Route::get('/posts/complete', [PostController::class , 'complete']);
 
 require __DIR__.'/auth.php';

@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use DateTime;
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);  
+        $posts = Post::where("user_id", Auth::user()->id)->whereNull("completed_dateTime")->getPaginateByLimit();
+        return view('posts.index')->with(['posts' => $posts]);  
     }
 
     public function show(Post $post)
@@ -42,8 +44,28 @@ class PostController extends Controller
 
     public function complete(Post $post)
     {
-        $posts = DB::table("posts")->whereNotNull("completed_dateTime")->get();
+        $posts = Post::where("user_id", Auth::user()->id)->whereNotNull("completed_dateTime")->get();
         return view('posts.complete')->with(['posts' => $posts]);
+    }
+
+    public function check(Post $post)
+    {
+        $post->completed_dateTime = new DateTime();
+        $post->save();
+        return back();
+    }
+
+    public function back(Post $post)
+    {
+        $post->completed_dateTime = null;
+        $post->save();
+        return back();
+    }
+
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return back();
     }
 }
 ?>

@@ -11,10 +11,17 @@ use DateTime;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Request $request, Post $post)
     {
-        $posts = Post::where("user_id", Auth::user()->id)->whereNull("completed_dateTime")->getPaginateByLimit();
-        return view('posts.index')->with(['posts' => $posts]);  
+        $sort_params=$request->input('sort_tag');
+        if($sort_params==null){
+            $posts = Post::where("user_id", Auth::user()->id)->whereNull("completed_dateTime")->orderBy('created_at', 'DESC')->paginate(4);
+        }elseif($sort_params=='deadline_dateTime'){
+            $posts = Post::where("user_id", Auth::user()->id)->whereNull("completed_dateTime")->orderBy($sort_params, 'ASC')->paginate(4);
+        }else{
+            $posts = Post::where("user_id", Auth::user()->id)->whereNull("completed_dateTime")->orderBy($sort_params, 'DESC')->paginate(4);
+        }
+        return view('posts.index')->with(['posts' => $posts]);
     }
 
     public function show(Post $post)
@@ -40,6 +47,18 @@ class PostController extends Controller
     public function create(Category $category)
     {
         return view('posts.create')->with(['categories' => $category->get()]);
+    }
+
+    public function index_categorize_page(Category $category)
+    {
+        return view('posts.categorize')->with(['categories' => $category->get()]);
+    }
+
+    Public function store_new_category(Request $request, Category $category)
+    {
+        $input = $request['category'];
+        $category->fill($input)->save();
+        return redirect('/posts');
     }
 
     public function complete(Post $post)

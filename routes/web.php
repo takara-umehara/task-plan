@@ -36,6 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/posts/create', [PostController::class, 'create']);
 
+    Route::get('/posts/categorize', [PostController::class, 'index_categorize_page']);//カテゴリー作成ページに遷移する
+
+    Route::post('/posts/categorize', [PostController::class, 'store_new_category']);//新しく作成したカテゴリーを保存する
+
     Route::post('/posts', [PostController::class, 'store']);
 
     Route::get('/posts/{post}', [PostController::class ,'show']);

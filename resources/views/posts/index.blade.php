@@ -13,6 +13,14 @@
         <a href='/posts/complete'>complete list</a>
         <a href='/posts/create'>create</a>
         <a href='/posts/categorize'>categorize</a>
+        <form action="/posts" id="form_sort_tag" method="GET">
+            <select id='sort_tag' name='sort_tag'>
+                <option>並び替え</option>
+                <option value='updated_at'>更新日時</option>
+                <option value='deadline_dateTime'>〆切時間</option>
+                <option value='importance'>重要度</option>
+            </select>
+        </form>
             @foreach ($posts as $post)
                 <div class='post'>
                     <div class='element checkbox'>
@@ -52,6 +60,12 @@
                     document.getElementById(`checkbox_${id}`).checked=false;
                 }
             }
+
+            function sendSortTag(){
+                document.getElementById(`form_sort_tag`).submit();
+            }
+
+            document.getElementById(`sort_tag`).addEventListener('change', sendSortTag);
         </script>
     </body>
 </html>
